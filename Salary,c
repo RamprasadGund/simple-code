@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+struct Employee {
+    char name[20];
+    int id;
+    int salary;
+};
+int main() {
+   int n;
+   printf("Enter the no. of employees : ");
+   scanf("%d", &n);
+   struct Employee employees[n];
+   for(int i = 0; i < n; i++)
+   {
+       printf("Enter employee name : ");
+       scanf("%s", employees[i].name);
+ 
+       printf("Enter employee ID : ");
+       scanf("%d", &employees[i].id);
+       
+       printf("Enter employee salary : ");
+       scanf("%d", &employees[i].salary);
+   }
+   
+   printf("\nUnsorted table :\n");
+   printf("Name\t\t ID\t\t Salary\n");
+   
+   for(int j = 0; j < n; j++)
+   {
+       printf("%s\t\t %d\t\t %d\n", employees[j].name, employees[j].id, employees[j].salary);
+   }
+   
+   for (int i = 0; i < n - 1; ++i) {
+        for (int j = 0; j < n - i - 1; ++j) {
+            if (employees[j].salary < employees[j + 1].salary) {
+                struct Employee temp = employees[j];
+                employees[j] = employees[j + 1];
+                employees[j + 1] = temp;
+            }
+        }
+    }
+
+
+    printf("\nSorted table :\n");
+    printf("Name\t\t ID\t\t Salary\n");
+    for (int i = 0; i < n; ++i) {
+        printf("%s\t\t %d\t\t %d\n", employees[i].name, employees[i].id, employees[i].salary);
+    }
+return 0;
+}
